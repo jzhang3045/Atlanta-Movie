@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block table %}
+
+<div class="row">
+    <div class="col-8">
+        <form class="form-signin" method="POST">
+            <h1 class="h3 mb-3 font-weight-normal">Create Movie</h1>
+            <label for="Name" class="sr-only">Name</label>
+            <input type="text" name="Name" class="form-control" placeholder="Movie Name" required autofocus>
+            <label for="Duration" class="sr-only">Duration</label>
+            <input type="number" name="Duration" class="form-control" placeholder="Movie Duration" required autofocus>
+            <label for="Release Date" class="sr-only">Release Date</label>
+            <input type="date" name="Release Date" class="form-control" placeholder="Movie Release Date" required autofocus>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+            <!-- type here not sure -->
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Back</button>       
+            {% if error %}
+            <div class="alert alert-info" role="alert">
+                {{error}}
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+

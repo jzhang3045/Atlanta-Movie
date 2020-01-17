@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+
+{% block table %}
+
+<div class="row">
+    <div class="col-6">
+        <form class="form-signin" method="POST">
+            <h1 class="h3 mb-3 font-weight-normal">Create Theater</h1>
+            <label for="Name" class="sr-only">Name</label>
+            <input type="text" name="Name" class="form-control" placeholder="Name" required autofocus>
+            <select name="Company">
+                <option value="all">--ALL--</option>
+                {%for Company in companies %}
+                <option value="{{Company[0]}}">{{Company[0]}}</option>
+                {%endfor%}
+            </select>
+            <label for="Street Address" class="sr-only">Street Address</label>
+            <input type="text" name="Street Address" class="form-control" placeholder="Street Address" required>
+            <label for="City" class="sr-only">City</label>
+            <input type="text" name="City" class="form-control" placeholder="City" required>
+            <select name="State">
+                <option value="all">--ALL--</option>
+                {%for State in states %}
+                <option value="{{State[0]}}">{{State[0]}}</option>
+                {%endfor%}
+            </select>
+            <label for="Zipcode" class="sr-only">Zipcode</label>
+            <input type="number" name="Zipcode" class="form-control" placeholder="Zipcode" required>
+            <label for="Capacity" class="sr-only">Capacity</label>
+            <input type="number" name="Capacity" class="form-control" placeholder="Street Address" required>
+            <select name="Manager">
+                <option value="all">--ALL--</option>
+                {%for Manager in managers %}
+                <option value="{{Manager[0]}}">{{Manager[0]}}</option>
+                {%endfor%}
+            </select>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+            <!-- type here not sure -->
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Back</button>       
+            {% if error %}
+            <div class="alert alert-info" role="alert">
+                {{error}}
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+

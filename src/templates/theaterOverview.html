@@ -1,0 +1,75 @@
+{% extends "index.html" %}
+{% block title %} Explore Theater {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}">
+{% endblock %}
+
+{% block table %}
+<div>
+    <form method="get">
+        <div class="form-group">
+            <label for="theater_name">Theater Name</label>
+            <select class="custom-select d-block w-100" id="theater" required>
+                <option value="all">--ALL--</option>
+                {%for theater in theaters %}
+                <option value="{{theater[0]}}">{{theater[0]}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="company_name">Company Name</label>
+            <select class="custom-select d-block w-100" id="company" required>
+                {%for company in companies %}
+                <option value="{{company[0]}}">{{company[0]}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="input" class="form-control" name="city" id="city">
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <select class="custom-select d-block w-100" id="state" required>
+                <option value="all">--ALL--</option>
+                {%for state in states %}
+                <option value="{{state[0]}}">{{state[0]}}</option>
+                {%endfor%}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+</div>
+<hr>
+<form method="post">
+<div class="form-group">
+        <label class="control-label">
+            Visit Date
+        </label>
+        <input type="date" name="visit" required>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Theater</th>
+                    <th>Address</th>
+                    <th>Company</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in result %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td><button class="btn btn-primary btn-sm">Visit</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</form>
+{% endblock %}
