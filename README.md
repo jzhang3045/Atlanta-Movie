@@ -1,4 +1,4 @@
-# Term Project of CS4400 in 19 Fall at GaTech
+# Term Project of Intro to Database System
 
 ## Setup
 
